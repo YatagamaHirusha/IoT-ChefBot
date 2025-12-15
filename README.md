@@ -175,10 +175,11 @@ Control & Sensor Pins:
 5. **Verify Operation**
    - Open Serial Monitor (115200 baud)
    - ESP32 should connect to WiFi and display IP address
-   - Camera server starts on port 80 (default HTTP port)
-   - Access stream at: `http://[ESP32_IP]:81/stream` (port may vary based on configuration)
-   - Access capture at: `http://[ESP32_IP]/capture`
-   - IP address is automatically sent to Firebase
+   - Camera HTTP server starts (default port 80 for web server, streaming typically on port 81)
+   - The mobile app expects:
+     - Stream endpoint: `http://[ESP32_IP]:81/stream`
+     - Capture endpoint: `http://[ESP32_IP]/capture` (port 80)
+   - IP address and URLs are automatically sent to Firebase
 
 ### 2. Firebase Setup
 
@@ -252,7 +253,7 @@ Control & Sensor Pins:
    }
    ```
    
-   Note: The `stream_url` port (81 in example) may vary. The Arduino code uses port 80 by default, but your network setup may require port forwarding or different configuration.
+   Note: The mobile app expects streaming on port 81 and capture on port 80 (default). If your ESP32 configuration differs, update the Firebase camera URLs accordingly.
 
 ### 3. Flutter App Setup
 
@@ -408,9 +409,11 @@ IoT-ChefBot/
 **Camera stream not loading**
 - Check ESP32-CAM is connected to same network
 - Verify ESP32 IP address in Firebase Realtime Database
-- Test stream URL directly in browser: `http://[ESP32_IP]/stream` or `http://[ESP32_IP]:81/stream`
-- Note: Port may be 80 (default) or 81 depending on your network configuration
-- Check firewall settings
+- Test endpoints in browser:
+  - Stream: `http://[ESP32_IP]:81/stream`
+  - Capture: `http://[ESP32_IP]/capture` (port 80)
+- Ensure camera URLs in Firebase match your ESP32 configuration
+- Check firewall settings and router port forwarding if needed
 
 **Build errors**
 - Run `flutter clean` and `flutter pub get`
