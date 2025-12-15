@@ -7,9 +7,9 @@ ChefBot is an advanced IoT-enabled smart cooking system that combines ESP32-CAM 
 ### 🛡️ Safety Features
 - **Smoke/Fire Detection** - Real-time monitoring using MQ-2 sensor to detect smoke and fire hazards
 - **Gas Leakage Detection** - MQ-5 sensor monitors for LPG/Natural gas leaks
-- **CO (Carbon Monoxide) Detection** - Monitors carbon monoxide levels for safety
 - **Flame Verification System** - Ensures the flame is lit after ignition, automatically shuts off gas if flame goes out
 - **Automatic Safety Shutoff** - Valve closes automatically when hazards are detected
+- **CO Sensor Support** - Hardware support for MQ-7 CO sensor (currently disabled in firmware but can be enabled)
 
 ### 📹 Online Streaming
 - **Live Video Streaming** - Real-time camera feed from ESP32-CAM at `/stream` endpoint
@@ -77,6 +77,7 @@ Built-in ESP32 libraries (no installation needed):
 - **Flame Sensor** - Pin 12
 - **Servo Motor** (Gas valve control) - Pin 14
 - **Igniter/Relay** - Pin 2
+- **MQ-7** (CO Sensor) - Currently removed in firmware to prevent flash issues, but hardware-ready (was Pin 4)
 
 ### Pin Configuration (ESP32-CAM)
 ```cpp
@@ -113,7 +114,7 @@ Control & Sensor Pins:
 - **ESP32 Core**: 2.0.0+ by Espressif Systems
 
 ### Flutter Applications
-- **Flutter SDK**: 3.9.2 or higher
+- **Flutter SDK**: ^3.9.2
 - **Dart SDK**: ^3.9.2
 - **Android Studio** / **VS Code** with Flutter extensions
 
@@ -174,7 +175,9 @@ Control & Sensor Pins:
 5. **Verify Operation**
    - Open Serial Monitor (115200 baud)
    - ESP32 should connect to WiFi and display IP address
-   - Camera server starts at `http://[ESP32_IP]/stream` and `http://[ESP32_IP]/capture`
+   - Camera server starts on port 80 (default HTTP port)
+   - Access stream at: `http://[ESP32_IP]:81/stream` (port may vary based on configuration)
+   - Access capture at: `http://[ESP32_IP]/capture`
    - IP address is automatically sent to Firebase
 
 ### 2. Firebase Setup
@@ -248,6 +251,8 @@ Control & Sensor Pins:
      "CO": false
    }
    ```
+   
+   Note: The `stream_url` port (81 in example) may vary. The Arduino code uses port 80 by default, but your network setup may require port forwarding or different configuration.
 
 ### 3. Flutter App Setup
 
@@ -403,7 +408,8 @@ IoT-ChefBot/
 **Camera stream not loading**
 - Check ESP32-CAM is connected to same network
 - Verify ESP32 IP address in Firebase Realtime Database
-- Test stream URL directly in browser: `http://[ESP32_IP]:81/stream`
+- Test stream URL directly in browser: `http://[ESP32_IP]/stream` or `http://[ESP32_IP]:81/stream`
+- Note: Port may be 80 (default) or 81 depending on your network configuration
 - Check firewall settings
 
 **Build errors**
