@@ -1,0 +1,16 @@
+# Flutter / Android
+build/
+**/build/
+
+*.apk
+*.aab
+*.so
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Logs
+*.log
+

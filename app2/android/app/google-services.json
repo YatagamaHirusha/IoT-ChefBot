@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "177944940463",
+    "firebase_url": "https://chefbot-smartcooker-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "chefbot-smartcooker",
+    "storage_bucket": "chefbot-smartcooker.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177944940463:android:d50b9436d3827a64d2e95a",
+        "android_client_info": {
+          "package_name": "com.dishani.chefbot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRtT7rbMJYeNFv1AnYDSchi--VJebrIJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177944940463:android:1f7a2b2b614fafb0d2e95a",
+        "android_client_info": {
+          "package_name": "com.example.app1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRtT7rbMJYeNFv1AnYDSchi--VJebrIJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177944940463:android:a78e888bd7f0ecb7d2e95a",
+        "android_client_info": {
+          "package_name": "com.example.chefbot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRtT7rbMJYeNFv1AnYDSchi--VJebrIJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
